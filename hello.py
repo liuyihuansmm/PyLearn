@@ -372,6 +372,7 @@ print p1.age
 
 #===========================================定制类===================
 #__str()__相当于java中的toString()
+'''
 class Person(object):
     __slots__ = ('__name','__age')
 
@@ -395,3 +396,38 @@ class Person(object):
         return 'Person object (name:%s,age:%d)' % (self.__name,self.__age)
 p1 = Person('lyh',23)
 print p1
+p1.name = 'smm'
+print p1
+'''
+
+#================枚举类,2.7没有这个概念=======================
+'''
+from enum import Enum
+
+Month =  Enum('Month',('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+print Month.Jan
+'''
+
+#==========================元类===============================
+'''
+def fn(self):
+    print 'Hello World'
+
+Hello = type('Hello',(object,),dict(hello=fn))
+
+h = Hello()
+h.hello()
+
+def f(n):
+    try:
+        #if n==0:
+            #raise('DivisionByZero')
+        return 10/n
+    except ZeroDivisionError as e:
+        print e
+    finally:
+        print 'END'
+
+#print f(0)
+print f(1)
+'''
